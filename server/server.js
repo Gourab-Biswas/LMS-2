@@ -20,7 +20,7 @@ await connectCloudinary()
 // Global Middlewares
 app.use(cors())
 app.use(express.json()) // Body parser should come before custom middleware
-
+app.use(clerkMiddleware())
 // Optional Clerk Middleware for protected routes only
 app.use((req, res, next) => {
   const openRoutes = ['/', '/clerk']

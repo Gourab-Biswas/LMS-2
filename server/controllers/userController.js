@@ -37,15 +37,15 @@ export const userEnrolledCourses = async (req, res) => {
 // purchase Course
 
 export const purchaseCourse = async (req, res)=>{
-try {
-const { courseId } = req.body
-const { origin } = req.headers
-const userId = req.auth.userId
-const userData = await User.findById(userId)
-const courseData = await Course.findById(courseId)
-if(!userData || !courseData){
-return res.json({ success: false, message: 'Data Not Found' })
-}
+  try {
+  const { courseId } = req.body
+  const { origin } = req.headers
+  const userId = req.auth.userId
+  const userData = await User.findById(userId)
+  const courseData = await Course.findById(courseId)
+  if(!userData || !courseData){
+  return res.json({ success: false, message: 'Data Not Found' })
+  }
 
 const purchaseData = {
     courseId: courseData._id,
