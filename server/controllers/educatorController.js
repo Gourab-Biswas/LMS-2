@@ -1,6 +1,8 @@
 import {clerkClient } from '@clerk/express'
 import Course from '../models/Course.js'
 import {v2 as cloudinary} from 'cloudinary'
+import { Purchase } from '../models/Purchase.js'
+import User from '../models/user.js'
 
 
 export const updateRoleToEducator = async (req,res) =>{
@@ -119,10 +121,10 @@ export const getEnrolledStudentsData = async (req, res) => {
       status: 'completed'
     })
     .populate('userId', 'name imageUrl')
-    .populate('courseId', 'courseTitle');
+    .populate('courseId', 'courseTitle')
 
 
-    const enrolledStudents = purchases.map(purchase => ({
+  const enrolledStudents = purchases.map(purchase => ({
   student: purchase.userId,
   courseTitle: purchase.courseId.courseTitle,
   purchaseDate: purchase.createdAt
