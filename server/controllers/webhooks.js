@@ -1,5 +1,4 @@
 import {Webhook} from 'svix'
-
 import User from '../models/user.js';
 import Stripe from 'stripe';
 import { Purchase } from '../models/Purchase.js';
@@ -129,7 +128,8 @@ export const stripeWebhooks = async (request,response)=>{
     }
     // ... handle other event types
     default:
-      console.log(`Unhandled event type ${event.type}`);
+      console.log("Stripe payment successful:", event.id);
+
   }
 
   // Return a response to acknowledge receipt of the event
